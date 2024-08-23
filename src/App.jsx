@@ -3,16 +3,18 @@ import "./App.css";
 
 export default function App() {
   const [usuarios, setUsuarios] = useState([
-    { email: "user1@example.com", senha: "senha123" },
+    //isso é um useState ele salva um estado no seu codigo
+    { email: "user1@example.com", senha: "senha123" }, // e essas sao as contas dentro de um objeto
     { email: "user2@example.com", senha: "password456" },
     { email: "user3@example.com", senha: "mysecret" },
   ]);
 
-  const [emailLogin, setEmailLogin] = useState("");
+  const [emailLogin, setEmailLogin] = useState(""); // os estados para cada função
   const [senhaLogin, setSenhaLogin] = useState("");
   const [mensagemLogin, setMensagemLogin] = useState("");
 
   const handleEmailLoginChange = (event) => {
+    //oque for escrito essa function vai mudar o valor
     setEmailLogin(event.target.value);
   };
 
@@ -20,11 +22,12 @@ export default function App() {
     setSenhaLogin(event.target.value);
   };
 
-
   const login = () => {
+    //a arrow function de login para validaçao
     const usuarioEncontrado = usuarios.find(
-      (usuario) => usuario.email === emailLogin && usuario.senha === senhaLogin
-    );
+      //o find e para ele parar quando oque ele pede for encontrado
+      (usuario) => usuario.email === emailLogin && usuario.senha === senhaLogin,
+    ); // o && faz que as duas promsessas tem que ser cumprida
     if (usuarioEncontrado) {
       setMensagemLogin("Login bem-sucedido!");
     } else {
@@ -38,8 +41,6 @@ export default function App() {
 
   return (
     <main style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-    
-
       <div
         style={{
           display: "flex",
@@ -56,8 +57,8 @@ export default function App() {
         <input
           type="email"
           placeholder="Email"
-          value={emailLogin}
-          onChange={handleEmailLoginChange}
+          value={emailLogin} // mostrar o valor
+          onChange={handleEmailLoginChange} //mudar o valor
           style={{
             padding: "10px",
             marginBottom: "10px",
